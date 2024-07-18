@@ -3,7 +3,7 @@ Michael O'Sullivan and Demian Oportus
 
 ----
 
-This is a web app to help piano students/teachers manage homework week-to-week. Students and teachers both have login credentials and every student is associated to a teacher. Students can view their homework and mark as complete/incomplete, and teachers can assign homework and remove homework that has been complete.
+This is a web app to help piano students/teachers manage homework week-to-week. Students and teachers both have login credentials and every student is associated to a teacher. Students can view their homework and mark items as complete/incomplete. Teachers can assign new homework and remove old homework that may or may not have been completed.
 
 Example workflow
   - Person A opens the website, creates account as Teacher with name/username/password
@@ -26,3 +26,11 @@ Technology used
     3. Start the server: `node server.js`
 
 3. Start using the app (Open client.html in you browser)
+
+
+## User documentation
+
+Our application has two types of users: Students (basic users) and Teachers (like admins).
+
+Students... { Full user description and explanation here - how to use the application, maybe with screenshots }
+
