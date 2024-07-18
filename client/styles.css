@@ -1,0 +1,14 @@
+body {
+    background-color: rgb(31, 28, 28);
+    text-align: center;
+    color: ivory;
+    font-family: Georgia, serif;
+}
+
+h1, h2 {
+  font-family: Georgia, serif;
+}
+hr {
+    width: 90%;
+    margin-bottom: 2rem;
+}
