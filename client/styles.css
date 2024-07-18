@@ -15,6 +15,7 @@ body {
 img {
 	width: 30%;
 	height: 30%;
+	border-radius: 2%;
 }
 
 .headerInfo {
@@ -47,7 +48,7 @@ img {
 	color: rgb(31, 28, 28);
 }
 
-p {
+p, h3 {
 	color:rgb(31, 28, 28);
 }
 
