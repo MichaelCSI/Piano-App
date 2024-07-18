@@ -15,7 +15,7 @@ Technology used
   - HTML/CSS frontend + JS for client interactions
   - Node JS for server interactions + Postgres (CockroachDB) for managing data
 
-## Steps to run:
+## Steps to run the application
 > You will need [Node](https://nodejs.org/en) installed on your machine
 
 1. Download or clone the repository
