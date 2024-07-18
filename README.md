@@ -12,8 +12,8 @@ Example workflow
       - Student can now login and see account information and homework
 
 Technology used
-   HTML/CSS frontend + JS for client interactions
-   Node JS for server interactions + Postgres (CockroachDB) for managing data
+  - HTML/CSS frontend + JS for client interactions
+  - Node JS for server interactions + Postgres (CockroachDB) for managing data
 
 ## Steps to run:
 > You will need [Node](https://nodejs.org/en) installed on your machine
