@@ -8,7 +8,7 @@
     <title>Piano App</title>
 </head>
 <body>
-    <h1> Piano Homework App </h1>
+    <h1> Piano Homework Project </h1>
     <div class="headerInfo">
         <div class="navBar">
             <a class="active" href="index.html">Home</a>
@@ -17,9 +17,22 @@
         </div>
         <span>Made by Michael O'Sullivan and Demian Oportus</span>
     </div>
+    
+    <div class="login">
+        <h3>Enter your login credentials</h3>
+        <form action="mainStudent.html">
+            <label for="first">Username:</label>
+            <input type="text" id="first" name="first" placeholder="Enter your Username" required>
 
-    <h4> Helping piano students and teachers manage their piano homework </h3>
-    <img src = "./images/catPiano.gif">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your Password" required>
+
+            <div class="wrap">
+                    <button type="submit">Login</button>
+            </div>
+        </form>
+        <p>Not registered? <a href='createStudent.html'>Create Student Account</a> </p>
+    </div>
 
     <script src="./client.js"></script>
 </body>

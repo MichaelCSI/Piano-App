@@ -2,13 +2,106 @@ body {
     background-color: rgb(31, 28, 28);
     text-align: center;
     color: ivory;
-    font-family: Georgia, serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
 }
 
-h1, h2 {
-  font-family: Georgia, serif;
+img {
+	width: 30%;
+	height: 30%;
 }
-hr {
-    width: 90%;
-    margin-bottom: 2rem;
+
+.headerInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+	width: 90%;
+	gap: 30%;
+	border-bottom: 2px solid ivory;
+}
+
+.navBar {
+	overflow: hidden;
+}
+.navBar a {
+	float: left;
+	color: ivory;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+	transition: 0.5s;
+	border-left: 2px solid ivory;
+}
+.navBar #rightmost {
+	border-right: 2px solid ivory;
+}
+.navBar a:hover {
+	background-color: ivory;
+	color: rgb(31, 28, 28);
+}
+
+p {
+	color:rgb(31, 28, 28);
+}
+
+.login {
+	margin-top: 4rem;
+  	background-color: ivory;
+  	border-radius: 15px;
+  	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  	padding: 10px 20px;
+  	transition: transform 0.2s;
+  	width: 500px;
+  	text-align: center;
+}
+
+label {
+  	display: block;
+  	width: 100%;
+  	margin-top: 10px;
+  	margin-bottom: 5px;
+  	text-align: left;
+  	color: rgb(31, 28, 28);
+  	font-weight: bold;
+}
+
+input {
+  	display: block;
+  	width: 100%;
+  	margin-bottom: 15px;
+  	padding: 10px;
+  	box-sizing: border-box;
+  	border: 1px solid rgb(31, 28, 28);
+  	border-radius: 5px;
+}
+
+button {
+  	padding: 15px;
+  	border-radius: 10px;
+  	margin-top: 15px;
+  	margin-bottom: 15px;
+  	border: none;
+  	color: white;
+  	cursor: pointer;
+  	background-color: rgb(31, 28, 28);
+	transition: 0.5s;
+  	width: 100%;
+  	font-size: 16px;
+}
+
+button:hover {
+	background-color: rgb(45, 42, 42);
+}
+
+.wrap {
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
 }
