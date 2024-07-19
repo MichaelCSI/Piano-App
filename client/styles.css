@@ -7,16 +7,7 @@ body {
   align-items: center;
   font-family: sans-serif;
   line-height: 1.5;
-  min-height: 100vh;
   margin: 0;
-}
-
-html,
-body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
 }
 
 .wrapper {
@@ -25,7 +16,7 @@ body {
 
 img {
   width: 30%;
-  height: 30%;
+  height: 40%;
   border-radius: 2%;
 }
 
@@ -59,8 +50,7 @@ img {
   color: rgb(31, 28, 28);
 }
 
-p,
-h3 {
+p, h3 {
   color: rgb(31, 28, 28);
 }
 
@@ -73,6 +63,12 @@ h3 {
   transition: transform 0.2s;
   width: 500px;
   text-align: center;
+}
+
+#errorMsg {
+  color: red;
+  height: 1rem;
+  margin-top: -1rem;
 }
 
 label {
@@ -119,7 +115,37 @@ button:hover {
   align-items: center;
 }
 
+.studentBox, .homeworkBox {
+  width: 30rem;
+  background-color: ivory;
+  color: rgb(31, 28, 28);
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+}
+
+.homework {
+  padding: 5px;
+  margin-top: 10px;
+  border-top: 2px solid ;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#studentWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
 footer {
+  position: absolute;
+  top: 100vh;
   background-color: rgb(45, 42, 42);
   color: ivory;
   padding: 20px 0;
@@ -136,33 +162,5 @@ footer {
 
 .footerContent p {
   margin: 5px 0;
-}
-
-.footerContent a {
   color: ivory;
-  text-decoration: none;
-  margin: 0 10px;
-  transition: color 0.3s;
-}
-
-.footerContent a:hover {
-  color: #ddd;
-}
-
-.socialMedia {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.socialIcon {
-  padding: 10px;
-  border: 1px solid ivory;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-
-.socialIcon:hover {
-  background-color: ivory;
-  color: rgb(45, 42, 42);
 }

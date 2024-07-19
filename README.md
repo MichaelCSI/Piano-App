@@ -20,12 +20,18 @@ Technology used
 
 1. Download or clone the repository
 
-2. Set up the server. In the command line for the project:
-    1. Navigate to the server folder: `cd server`
-    2. Install dependencies: `npm install`
-    3. Start the server: `node server.js`
+2. Install dependencies: In the command line for the project run `npm install`
 
-3. Start using the app (Open client.html in you browser)
+3. Start client and server
+  - Navigate to server directory `cd server` and run `node server.js`
+  - Navigate to client directory `cd client` and run `http-server`
+    - Navigate to `http://localhost:8080` in browser
+    - Note: Running `http-server` will output in terminal which address the web app is on
+
+4. Use the application
+  - For the sake of testing, the DB is already populated with at least one student and teacher
+    - Student login: {username : usernameStudent, password : password}
+    - Teacher login: {username : usernameTeacher, password : password}
 
 
 ## User documentation

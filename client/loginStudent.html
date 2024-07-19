@@ -20,33 +20,25 @@
     
     <div class="login">
         <h3>Enter your student login information</h3>
-        <form action="mainStudent.html">
-            <label for="first">Username:</label>
-            <input type="text" placeholder="Enter your Username" required>
+        <h4 id="errorMsg"></h4>
+        <form id="loginForm" >
+            <label>Username:</label>
+            <input type="text" id="username" placeholder="Enter your Username" required>
 
-            <label for="password">Password:</label>
-            <input type="password" placeholder="Enter your Password" required>
+            <label>Password:</label>
+            <input type="password" id="password" placeholder="Enter your Password" required>
 
             <div class="wrap">
-                    <button type="submit">Login</button>
+                    <button type="submit" id="login">Login</button>
             </div>
         </form>
         <p>Not registered? <a href='createStudent.html'>Create Student Account</a> </p>
     </div>
-<footer>
-        <div class="footerContent">
-          <p>&copy; 2024 Piano App. All rights reserved.</p>
-          <p>
-            Contact us:
-            <a href="mailto:support@pianoapp.com">support@pianoapp.com</a>
-          </p>
-          <div class="socialMedia">
-            <a href="#" class="socialIcon">Facebook</a>
-            <a href="#" class="socialIcon">Twitter</a>
-            <a href="#" class="socialIcon">Instagram</a>
-          </div>
-        </div>
-      </footer>
-    <script src="./client.js"></script>
+    <footer>
+      <div class="footerContent">
+        <p>&copy; 2024 Piano App. All rights reserved.</p>
+      </div>
+    </footer>
+    <script src="./loginStudent.js"></script>
 </body>
 </html>
