@@ -1,108 +1,168 @@
 body {
-    background-color: rgb(31, 28, 28);
-    text-align: center;
-    color: ivory;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: sans-serif;
-    line-height: 1.5;
-    min-height: 100vh;
-    flex-direction: column;
-    margin: 0;
+  background-color: rgb(31, 28, 28);
+  text-align: center;
+  color: ivory;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  flex: 1;
 }
 
 img {
-	width: 30%;
-	height: 30%;
-	border-radius: 2%;
+  width: 30%;
+  height: 30%;
+  border-radius: 2%;
 }
 
 .headerInfo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-	width: 90%;
-	gap: 30%;
-	border-bottom: 2px solid ivory;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  gap: 30%;
+  border-bottom: 2px solid ivory;
 }
 
 .navBar {
-	overflow: hidden;
+  overflow: hidden;
 }
 .navBar a {
-	float: left;
-	color: ivory;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-	font-size: 17px;
-	transition: 0.5s;
-	border-left: 2px solid ivory;
+  float: left;
+  color: ivory;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  transition: 0.5s;
+  border-left: 2px solid ivory;
 }
 .navBar #rightmost {
-	border-right: 2px solid ivory;
+  border-right: 2px solid ivory;
 }
 .navBar a:hover {
-	background-color: ivory;
-	color: rgb(31, 28, 28);
+  background-color: ivory;
+  color: rgb(31, 28, 28);
 }
 
-p, h3 {
-	color:rgb(31, 28, 28);
+p,
+h3 {
+  color: rgb(31, 28, 28);
 }
 
 .login {
-	margin-top: 4rem;
-  	background-color: ivory;
-  	border-radius: 15px;
-  	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  	padding: 10px 20px;
-  	transition: transform 0.2s;
-  	width: 500px;
-  	text-align: center;
+  margin-top: 4rem;
+  background-color: ivory;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+  transition: transform 0.2s;
+  width: 500px;
+  text-align: center;
 }
 
 label {
-  	display: block;
-  	width: 100%;
-  	margin-top: 10px;
-  	margin-bottom: 5px;
-  	text-align: left;
-  	color: rgb(31, 28, 28);
-  	font-weight: bold;
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  text-align: left;
+  color: rgb(31, 28, 28);
+  font-weight: bold;
 }
 
 input {
-  	display: block;
-  	width: 100%;
-  	margin-bottom: 15px;
-  	padding: 10px;
-  	box-sizing: border-box;
-  	border: 1px solid rgb(31, 28, 28);
-  	border-radius: 5px;
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid rgb(31, 28, 28);
+  border-radius: 5px;
 }
 
 button {
-  	padding: 15px;
-  	border-radius: 10px;
-  	margin-top: 15px;
-  	margin-bottom: 15px;
-  	border: none;
-  	color: white;
-  	cursor: pointer;
-  	background-color: rgb(31, 28, 28);
-	transition: 0.5s;
-  	width: 100%;
-  	font-size: 16px;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  background-color: rgb(31, 28, 28);
+  transition: 0.5s;
+  width: 100%;
+  font-size: 16px;
 }
 
 button:hover {
-	background-color: rgb(45, 42, 42);
+  background-color: rgb(45, 42, 42);
 }
 
 .wrap {
-  	display: flex;
-  	justify-content: center;
-  	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  background-color: rgb(45, 42, 42);
+  color: ivory;
+  padding: 20px 0;
+  width: 100%;
+  text-align: center;
+}
+
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerContent p {
+  margin: 5px 0;
+}
+
+.footerContent a {
+  color: ivory;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.footerContent a:hover {
+  color: #ddd;
+}
+
+.socialMedia {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.socialIcon {
+  padding: 10px;
+  border: 1px solid ivory;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.socialIcon:hover {
+  background-color: ivory;
+  color: rgb(45, 42, 42);
 }
