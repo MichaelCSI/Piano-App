@@ -20,21 +20,22 @@
 
     <div class="login">
         <h3>Create your student account</h3>
-        <form action="mainStudent.html">
+        <h4 id="successOrFail"></h4>
+        <form id="createForm">
             <label>Name:</label>
-            <input type="text" placeholder="Enter your Name" required>
+            <input type="text" id="name" placeholder="Enter your Name" required>
 
             <label>Username:</label>
-            <input type="text" placeholder="Enter your Username" required>
+            <input type="text" id="studentUsername" placeholder="Enter your Username" required>
 
             <label>Password:</label>
-            <input type="password" placeholder="Enter your Password" required>
+            <input type="password" id="password" placeholder="Enter your Password" required>
 
             <label>Teacher's Username:</label>
-            <input type="number" placeholder="Enter your Teacher's Username" required>
+            <input type="text" id="teacherUsername" placeholder="Enter your Teacher's Username" required>
 
             <div class="wrap">
-                    <button type="submit">Create Account</button>
+                    <button type="submit" id="create">Create Account</button>
             </div>
         </form>
     </div>
@@ -45,6 +46,6 @@
       </div>
     </footer>
 
-    <script src="./client.js"></script>
+    <script src="./createStudent.js"></script>
 </body>
 </html>

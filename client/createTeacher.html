@@ -20,18 +20,19 @@
 
     <div class="login">
         <h3>Create your teacher account</h3>
-        <form action="mainTeacher.html">
-            <label for="first">Name:</label>
-            <input type="text"placeholder="Enter your Name" required>
+        <h4 id="successOrFail"></h4>
+        <form id="createForm">
+            <label>Name:</label>
+            <input type="text" id="name" placeholder="Enter your Name" required>
 
-            <label for="first">Username:</label>
-            <input type="text" placeholder="Enter your Username" required>
+            <label>Username:</label>
+            <input type="text" id="username" placeholder="Enter your Username" required>
 
-            <label for="password">Password:</label>
-            <input type="password" placeholder="Enter your Password" required>
+            <label>Password:</label>
+            <input type="password" id="password" placeholder="Enter your Password" required>
 
             <div class="wrap">
-                    <button type="submit">Create Account</button>
+                    <button type="submit" id="create">Create Account</button>
             </div>
         </form>
     </div>
@@ -40,6 +41,6 @@
         <p>&copy; 2024 Piano App. All rights reserved.</p>
       </div>
     </footer>
-    <script src="./client.js"></script>
+    <script src="./createTeacher.js"></script>
 </body>
 </html>

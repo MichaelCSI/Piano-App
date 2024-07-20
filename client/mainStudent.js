@@ -12,8 +12,7 @@ async function callEndpoint(endpoint, method, data = null) {
 
     const response = await fetch(endpoint, options);
     if (!response.ok) {
-        let msg = response.status === 404 ? "Username not found" : "Incorrect password";
-        throw new Error(msg);
+        throw new Error("Status: " + response.status);
     }
 
     const result = await response.json();
@@ -38,6 +37,11 @@ callEndpoint(
 ).then(result => {
     console.log('Response:', result);
 
+    const homeworkWrapper = document.getElementById("homeworkWrapper");
+    if(result.homework.length < 1) {
+        studentWrapper.innerText = "No Current Homework";
+    }
+
     // Add all homework to student page
     for (let homeworkIndex = 0; homeworkIndex < result.homework.length; homeworkIndex++) {
         let homeworkBox = document.createElement("div");
@@ -60,7 +64,6 @@ callEndpoint(
         
         homeworkBox.appendChild(homeworkElement);
         
-        const homeworkWrapper = document.getElementById("homeworkWrapper");
         homeworkWrapper.appendChild(homeworkBox);
     }
 }).catch(error => {

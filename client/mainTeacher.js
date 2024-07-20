@@ -12,8 +12,7 @@ async function callEndpoint(endpoint, method, data = null) {
 
     const response = await fetch(endpoint, options);
     if (!response.ok) {
-        let msg = response.status === 404 ? "Username not found" : "Incorrect password";
-        throw new Error(msg);
+        throw new Error("Status: " + response.status);
     }
 
     const result = await response.json();
@@ -37,6 +36,11 @@ callEndpoint(
 ).then(result => {
     console.log('Response:', result);
 
+    const studentWrapper = document.getElementById("studentWrapper");
+    if(result.students.length < 1) {
+        studentWrapper.innerText = "No Current Students";
+    }
+
     // Add all students to teacher page
     for (let studentIndex = 0; studentIndex < result.students.length; studentIndex++) {
         let studentElement = document.createElement("div");
@@ -50,6 +54,9 @@ callEndpoint(
         // Add headers to new student div
         studentElement.innerHTML = `<b>${name}</b> <br> ${username} <br><br> <b>Homework<b>`;
 
+        if(currentStudent.homework.length < 1) {
+            studentElement.innerHTML += "<br>No Current Homework";
+        }
         // Add all homework to new student div
         for(let homeworkIndex = 0; homeworkIndex < currentStudent.homework.length; homeworkIndex++) {
             let homeworkElement = document.createElement("div");
@@ -70,7 +77,6 @@ callEndpoint(
             studentElement.appendChild(homeworkElement);
         }
         
-        const studentWrapper = document.getElementById("studentWrapper");
         studentWrapper.appendChild(studentElement);
     }
 }).catch(error => {

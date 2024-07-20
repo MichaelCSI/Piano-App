@@ -65,7 +65,7 @@ p, h3 {
   text-align: center;
 }
 
-#errorMsg {
+#errorMsg, #successOrFail {
   color: red;
   height: 1rem;
   margin-top: -1rem;
@@ -135,8 +135,9 @@ button:hover {
   align-items: flex-start;
 }
 
-#studentWrapper {
+#studentWrapper, #homeworkWrapper {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -145,10 +146,10 @@ button:hover {
 
 footer {
   position: absolute;
-  top: 100vh;
+  top: 120vh;
   background-color: rgb(45, 42, 42);
   color: ivory;
-  padding: 20px 0;
+  padding: 10px 0;
   width: 100%;
   text-align: center;
 }

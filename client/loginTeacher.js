@@ -1,4 +1,4 @@
-// Generic function for calling our API get/post methods
+// Generic function for calling our API get/post methods with error msg relating to login
 async function callEndpoint(endpoint, method, data = null) {
     const options = {
         method: method,
@@ -21,7 +21,6 @@ async function callEndpoint(endpoint, method, data = null) {
 }
 
 document.getElementById("loginForm").addEventListener("submit", function (event) {
-    // Don't submit unless we have valid values
     event.preventDefault();
     const username = document.getElementById("username");
     const password = document.getElementById("password");

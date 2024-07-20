@@ -21,45 +21,104 @@ app.get('/', (req, res) => {
 })
 
 // Endpoint to post a teacher (+ new person) to DB
-app.post("/api/teacher", async (req, res) => {
-    const { name, username, password } = req.body;
-    const text = `
-        WITH teacher_sample AS (
+app.post("/api/createteacher", async (req, res) => {
+    const { username, password, name } = req.body;
+
+    // Check if teacher username already exists
+    const checkUsernameText = `
+        SELECT 1 FROM Teacher WHERE teacher_username = $1
+    `;
+
+    const insertText = `
+        WITH new_person AS (
             INSERT INTO Person (person_name) 
-            VALUES ($1) 
+            VALUES ($3) 
             RETURNING person_id
         )
         INSERT INTO Teacher (teacher_username, teacher_password, person_id)
-            VALUES ($2, $3, (select person_id from teacher_sample));
-        `;
-    const values = [name, username, password];
+            VALUES ($1, $2, (SELECT person_id FROM new_person));
+    `;
 
     try {
-        const result = await client.query(text, values);
-        res.status(201).json(result.rows[0]);
+        // Check if the username already exists
+        const usernameCheckResult = await client.query(checkUsernameText, [username]);
+        if (usernameCheckResult.rowCount > 0) {
+            res.status(400).json({ error: "Teacher username already exists" });
+            return;
+        }
+
+        // Insert new person and teacher
+        const values = [username, password, name];
+        const result = await client.query(insertText, values);
+        res.status(200).json({ 
+            msg: "Inserted teacher",
+            username: username,
+            password: password
+        });
     } catch (err) {
         console.error("Error executing teacher query", err.stack);
         res.status(500).json({ error: "Internal Server Error" });
     }
 });
 
+
+
 // Endpoint to post a student (+ new person) to DB
-app.post("/api/student", async (req, res) => {
-    const { name, studentUsername, password, teacherUsername } = req.body;
-    const text = `
-        WITH student_sample AS (
+app.post("/api/createstudent", async (req, res) => {
+    const { studentUsername, password, name, teacherUsername } = req.body;
+
+    // Check if student username already exists
+    const checkUsernameText = `
+        SELECT 1 FROM Student WHERE student_username = $1
+    `;
+
+    const checkTeacherExists = `
+        SELECT 1 FROM Teacher WHERE teacher_username = $1
+    `;
+
+    const insertTextStudent = `
+        WITH new_person AS (
             INSERT INTO Person (person_name) 
-            VALUES ($1) 
+            VALUES ($3) 
             RETURNING person_id
         )
         INSERT INTO Student (student_username, student_password, person_id, teacher_username)
-            VALUES ($2, $3, (select person_id from student_sample), $4);
-        `;
-    const values = [name, studentUsername, password, teacherUsername];
+            VALUES ($1, $2, (SELECT person_id FROM new_person), $4);
+    `;
+
+    const insertTextTeaches = `
+        INSERT INTO Teaches (teacher_username, student_username) 
+            VALUES ($1, $2);
+    `
 
     try {
-        const result = await client.query(text, values);
-        res.status(201).json(result.rows[0]);
+        // Check if the student username already exists
+        const usernameCheckResult = await client.query(checkUsernameText, [studentUsername]);
+        if (usernameCheckResult.rowCount > 0) {
+            res.status(400).json({ error: "Student username already exists" });
+            return;
+        }
+
+        // Check if the teacher they are trying to assign exists
+        const teacherCheckResult = await client.query(checkTeacherExists, [teacherUsername]);
+        if (teacherCheckResult.rowCount === 0) {
+            res.status(401).json({ error: "Teacher does not exist" });
+            return;
+        }
+
+        // Insert new person and student
+        const values = [studentUsername, password, name, teacherUsername];
+        const insertStudentResult = await client.query(insertTextStudent, values);
+
+        // Insert new student-teacher relation in teaches table
+        const insertTeachesResult = await client.query(insertTextTeaches, [teacherUsername, studentUsername]);
+
+        res.status(200).json({ 
+            msg: "Inserted student",
+            username: studentUsername,
+            password: password,
+            teacherUsername: teacherUsername
+        });
     } catch (err) {
         console.error("Error executing teacher query", err.stack);
         res.status(500).json({ error: "Internal Server Error" });
@@ -81,7 +140,7 @@ app.get("/api/student", async (req, res) => {
         const result = await client.query(text, values);
 
         // Username not found
-        if (result.rows.length === 0) {
+        if (result.rowCount === 0) {
             res.status(404).json({ error: "Student username not found" });
             return;
         }
