@@ -11,9 +11,9 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const client = new Client({
-    user: DB_USER,
-    password: DB_PASSWORD,
-    host: DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    host: process.env.DB_HOST,
     database: 'defaultdb',
     port: 26257,
     ssl: {
