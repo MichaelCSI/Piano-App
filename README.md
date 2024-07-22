@@ -39,5 +39,15 @@ Technology used
 
 Our application has two types of users: Students (basic users) and Teachers (like admins).
 
-Students... { Full user description and explanation here - how to use the application, maybe with screenshots }
+Students can create an account with a name, unique username, password, and the username of their teacher. They can then log into this account with their username and password and see homework their teacher as assigned, as well as being able to mark it as complete/incomplete. Teachers, similarly to students, can create an account with a name, unique username, and password, and can see their students, as well as assign/remove homework.
+
+## Screenshots
+![Screenshot 1](https://github.com/MichaelCSI/piano-app/blob/master/docs/images/home.png)
+![Screenshot 2](https://github.com/MichaelCSI/piano-app/blob/master/docs/images/studentLogin.png)
+![Screenshot 3](https://github.com/MichaelCSI/piano-app/blob/master/docs/images/studentCreate.png)
+![Screenshot 4](https://github.com/MichaelCSI/piano-app/blob/master/docs/images/studentMain.png)
+![Screenshot 5](https://github.com/MichaelCSI/piano-app/blob/master/docs/images/teacherLogin.png)
+![Screenshot 6](https://github.com/MichaelCSI/piano-app/blob/master/docs/images/teacherCreate.png)
+![Screenshot 7](https://github.com/MichaelCSI/piano-app/blob/master/docs/images/teacherMain.png)
+![Screenshot 8](https://github.com/MichaelCSI/piano-app/blob/master/docs/images/teacherMain2.png)
 
