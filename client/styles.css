@@ -10,6 +10,11 @@ body {
   margin: 0;
 }
 
+hr {
+  border-top: 4px dashed rgb(31, 28, 28);
+  width: 100%;
+}
+
 .wrapper {
   flex: 1;
 }
@@ -109,20 +114,22 @@ button:hover {
   background-color: rgb(45, 42, 42);
 }
 
-.wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.completeButton, .addHomework {
+  margin-top: 10px;
+  width: 50%;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .studentBox, .homeworkBox {
-  width: 30rem;
+  width: 60%;
   background-color: ivory;
   color: rgb(31, 28, 28);
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 20px;
-  margin: 10px;
+  margin-bottom: 100px;
   text-align: center;
 }
 
@@ -136,12 +143,18 @@ button:hover {
 }
 
 #studentWrapper, #homeworkWrapper {
+  width: 60%;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin-top: 2rem;
+  height: 80vh;
+  box-sizing: border-box;
+  border-left: 2px solid ivory;
+  border-right: 2px solid ivory;
+  border-bottom: 1px solid ivory;
+  overflow: auto;
 }
 
 footer {

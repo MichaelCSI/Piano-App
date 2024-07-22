@@ -16,7 +16,12 @@ const client = new Client({
 client.connect();
 
 // Basic test endpoint
-app.get('/', (req, res) => {
+app.get('/api', async (req, res) => {
+    const text = `
+        SELECT * FROM Person;
+    `;
+    const result = await client.query(text);
+
     res.status(201).json({reply: "Hello World"});
 })
 
@@ -249,6 +254,42 @@ app.get("/api/studentsandhomework", async (req, res) => {
     }
 });
 
+// Endpoint to toggle completion status of homework to true/false, returning new comlpete value
+app.put("/api/homeworkcomplete", async (req, res) => {
+    const { homeworkId } = req.query;
+
+    // Query to fetch current complete value and update it
+    const selectText = `
+        SELECT complete
+        FROM Homework
+        WHERE homework_id = $1;
+    `;
+    
+    const updateText = `
+        UPDATE Homework
+        SET complete = NOT complete
+        WHERE homework_id = $1
+        RETURNING complete;
+    `;
+
+    try {
+        // Fetch current complete value
+        const selectResult = await client.query(selectText, [homeworkId]);
+        if (selectResult.rows.length === 0) {
+            return res.status(404).json({ error: "Homework not found" });
+        }
+
+        // Update complete value and return new value
+        const updateResult = await client.query(updateText, [homeworkId]);
+        const newCompleteValue = updateResult.rows[0].complete;
+
+        res.status(200).json({ complete: newCompleteValue });
+    } catch (err) {
+        console.error("Error executing homework query", err.stack);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
 // Endpoint to get a list of homework for a given student
 app.get("/api/homework", async (req, res) => {
     const { username } = req.query;
@@ -271,6 +312,79 @@ app.get("/api/homework", async (req, res) => {
     }
 });
 
+// Endpoint to add new homework (added in Homework and StudentHomework tables)
+app.post("/api/homework", async (req, res) => {
+    const { username, details, dueDate } = req.body;
+
+    const text = `
+        WITH new_homework AS (
+            INSERT INTO Homework (details, due_date, complete)
+            VALUES ($2, $3, $4)
+            RETURNING homework_id
+        )
+        INSERT INTO StudentHomework (student_username, homework_id)
+            VALUES ($1, (SELECT homework_id FROM new_homework));
+    `;
+
+    try {
+        // Insert into Homework and StudentHomework table
+        const result = await client.query(text, [username, details, dueDate, false]);
+        res.status(200).json({ 
+            msg: "Inserted Homework",
+            username: username,
+            details: details
+        });
+    } catch (err) {
+        console.error("Error executing teacher query", err.stack);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+// Endpoint to delete homework from Homework and StudentHomework tables
+app.delete("/api/homework", async (req, res) => {
+    const { username, homeworkId } = req.query;
+
+    const findHomeworkText = `
+        SELECT *
+        FROM StudentHomework
+        WHERE student_username = $1 AND homework_id = $2;
+    `
+
+    const deleteStudentHomeworkText = `
+        DELETE FROM StudentHomework
+        WHERE student_username = $1
+        AND homework_id = $2;    
+    `;
+
+    const deleteHomeworkText = `
+        DELETE FROM StudentHomework
+        WHERE homework_id = $1;
+    `;
+
+    try {
+        // Check that homework exists
+        const result = await client.query(findHomeworkText, [username, homeworkId]);
+
+        // Homework not found
+        if (result.rowCount === 0) {
+            res.status(404).json({ error: "Homework not found" });
+            return;
+        }
+
+        // Delete from Homework and StudentHomework table
+        const resultStudentHomework = await client.query(deleteStudentHomeworkText, [username, homeworkId]);
+        const resultHomework = await client.query(deleteHomeworkText, [homeworkId]);
+
+        res.status(200).json({ 
+            msg: "Deleted Homework",
+            username: username,
+            homeworkId: homeworkId
+        });
+    } catch (err) {
+        console.error("Error executing teacher query", err.stack);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

@@ -35,9 +35,9 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
         "GET"
     ).then(result => {
         console.log('Response:', result);
-        sessionStorage.setItem("studentUsername", result.username);
-        sessionStorage.setItem("studentName", result.personName);
-        window.location.href = "http://localhost:8080/mainStudent.html"
+        sessionStorage.setItem("personName", result.personName);
+        sessionStorage.setItem("username", result.username);
+        window.location.href = "http://localhost:8080/mainStudent.html";
     }).catch(error => {
         console.error(error);
         const errorMsg = document.getElementById("errorMsg");

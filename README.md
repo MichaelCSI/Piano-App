@@ -32,6 +32,7 @@ Technology used
   - For the sake of testing, the DB is already populated with at least one student and teacher
     - Student login: {username : usernameStudent, password : password}
     - Teacher login: {username : usernameTeacher, password : password}
+  - NOTE: For some reason, maybe due to http-server, login attemps don't work on 1st try, so if you login and see an empty page, navigate back to the login page and retry, it should work
 
 
 ## User documentation
