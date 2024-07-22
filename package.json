@@ -6,7 +6,7 @@
     "pg": "^8.12.0"
   },
   "scripts": {
-    "start": "concurrently \"cd server && node server.js\" \"cd client && http-server\""
+    "start": "concurrently \"cd server && node server.js\" \"cd client && http-server --cors\""
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

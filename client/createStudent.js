@@ -28,8 +28,9 @@ document.getElementById("createForm").addEventListener("submit", function (event
     const name = document.getElementById("name");
     const teacherUsername = document.getElementById("teacherUsername");
 
+    const url = process.env.PRODUCTION ? "https://piano-app-production.up.railway.app/" : "http://localhost:3000/";
     callEndpoint(
-        `http://localhost:3000/api/createstudent`, 
+        `${url}api/createstudent?`, 
         "POST",
         {
             studentUsername: username.value,
