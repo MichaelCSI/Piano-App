@@ -1,3 +1,4 @@
+require("dotenv").config({path:__dirname+"/./../.env"});
 const express = require("express");
 const { Client } = require("pg");
 const cors = require('cors');
@@ -17,7 +18,7 @@ const client = new Client({
     database: 'defaultdb',
     port: process.env.PORT,
     ssl: {
-      rejectUnauthorized: false, // If you have a certificate, you might need to adjust this
+      rejectUnauthorized: false
     }
   });
 client.connect();

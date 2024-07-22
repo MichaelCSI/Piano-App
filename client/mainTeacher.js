@@ -36,9 +36,8 @@ const params = new URLSearchParams({
     username: teacherUsername
 }).toString();
 
-const url = process.env.PRODUCTION ? "https://piano-app-production.up.railway.app/" : "http://localhost:3000/";
 callEndpoint(
-    `${url}api/studentsandhomework?${params}`, 
+    `http://localhost:3000/api/studentsandhomework?${params}`, 
     "GET"
 ).then(result => {
     console.log('Response:', result);
@@ -131,7 +130,7 @@ callEndpoint(
 
             // Update DB value and UI with refresh
             callEndpoint(
-                `${url}api/homework`, 
+                `http://localhost:3000/api/homework`, 
                 "POST", 
                 {
                     username: studentUsername,
@@ -183,7 +182,7 @@ callEndpoint(
             }).toString();
         
             callEndpoint(
-                `${url}api/homework?${params}`, 
+                `http://localhost:3000/api/homework?${deleteParams}`,
                 "DELETE"
             )
             .then(result => {

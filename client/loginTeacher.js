@@ -30,9 +30,8 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
         password: password.value
     }).toString();
 
-    const url = process.env.PRODUCTION ? "https://piano-app-production.up.railway.app/" : "http://localhost:3000/";
     callEndpoint(
-        `${url}api/teacher?${params}`, 
+        `http://localhost:3000/api/teacher?${params}`, 
         "GET"
     ).then(result => {
         console.log('Response:', result);

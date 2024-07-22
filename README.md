@@ -23,10 +23,9 @@ Technology used
 2. Install dependencies: In the command line for the project run `npm install`
 
 3. Start client and server
-  - Navigate to server directory `cd server` and run `node server.js`
-  - Navigate to client directory `cd client` and run `http-server`
-    - Navigate to `http://localhost:8080` in browser
-    - Note: Running `http-server` will output in terminal which address the web app is on
+  - From project directory, open a terminal window and run `npm start` 
+    - This command runs `http-server` for client and `node server.js` for server
+  - Navigate to `http://localhost:8080` in browser, a link should appear in the terminal window
 
 4. Use the application
   - For the sake of testing, the DB is already populated with at least one student and teacher

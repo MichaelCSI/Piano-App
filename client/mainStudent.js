@@ -31,9 +31,8 @@ const params = new URLSearchParams({
     username: username
 }).toString();
 
-const url = process.env.PRODUCTION ? "https://piano-app-production.up.railway.app/" : "http://localhost:3000/";
 callEndpoint(
-    `${url}api/homework?${params}`, 
+    `http://localhost:3000/api/homework?${params}`, 
     "GET"
 ).then(result => {
     console.log('Response:', result);
@@ -79,7 +78,7 @@ callEndpoint(
             }).toString();
             
             callEndpoint(
-                `${url}api/homeworkcomplete?${params}`, 
+                `http://localhost:3000/api/homeworkcomplete?${completeParams}`, 
                 "PUT"
             )
             .then(result => {
