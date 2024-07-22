@@ -15,7 +15,7 @@ const client = new Client({
     password: process.env.DB_PASSWORD,
     host: process.env.DB_HOST,
     database: 'defaultdb',
-    port: 26257,
+    port: process.env.PORT,
     ssl: {
       rejectUnauthorized: false, // If you have a certificate, you might need to adjust this
     }
