@@ -11,8 +11,15 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const client = new Client({
-  connectionString: "postgresql://michael:wiCJxcfeRZ2bdYgxUm-VDA@damp-spider-7824.g8z.gcp-us-east1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full"
-});
+    user: DB_USER,
+    password: DB_PASSWORD,
+    host: DB_HOST,
+    database: 'defaultdb',
+    port: 26257,
+    ssl: {
+      rejectUnauthorized: false, // If you have a certificate, you might need to adjust this
+    }
+  });
 client.connect();
 
 // Basic test endpoint
