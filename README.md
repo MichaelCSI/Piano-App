@@ -23,6 +23,8 @@ Technology used
 2. Install dependencies: In the command line for the project run `npm install`
 
 3. Start client and server
+  - NOTE: Before running this step, a `.env` file with DB connection information must be in the project directory
+    - If this project has been shared with you, you should also have the `.env` file, place it under `PIANO-APP-MASTER`
   - From project directory, open a terminal window and run `npm start` 
     - This command runs `http-server` for client and `node server.js` for server
   - Navigate to `http://localhost:8080` in browser, a link should appear in the terminal window
