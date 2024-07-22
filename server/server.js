@@ -4,7 +4,7 @@ const cors = require('cors');
 const bodyParser = require("body-parser");
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3000;
 
 // Use CORS - allows requests from localhost:8080 (web) to localhost:3000 (server)
 app.use(cors());
